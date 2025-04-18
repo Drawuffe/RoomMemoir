@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,24 +10,29 @@ public class PickingUp : MonoBehaviour
     public bool pickedUp;
     private Rigidbody rb;
     public float throwAmount;
-
-    
-    public bool interactable;
+    ObjectInteration objectInt;
+   
 
     private void Start()
     {
-       
+        objectInt = GameObject.FindGameObjectWithTag("Player").GetComponent<ObjectInteration>();
         rb = GetComponent<Rigidbody>();
     }
     public void PickingUpObjects()
     {
-        if (interactable == true)
+        //Debug.Log("Script Read ");
+        
+        if (objectInt.interactable == true)
         {
+            //Debug.Log("Interactable is true");
             if (Input.GetMouseButtonDown(0))
             {
+                Debug.Log("E clicked");
                 objTransform.parent = cameraTrans;
                 rb.useGravity = false;
                 pickedUp = true;
+
+                Debug.Log("pick");
 
             }
             if (Input.GetMouseButtonUp(0))
@@ -36,21 +42,22 @@ public class PickingUp : MonoBehaviour
                 pickedUp = false;
 
             }
-            if (pickedUp == true)
+            //throwing mechanic? couldn't get the object to move on the X/Z and not the Y
+            /*if (pickedUp == true)
             {
-                if (Input.GetMouseButtonDown(1))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     objTransform.transform.parent = null;
-                    rb.useGravity = true;
+                    rb.useGravity = false;
                     rb.velocity = cameraTrans.forward * throwAmount * Time.deltaTime;
                     pickedUp = false;
 
                 }
 
-            }
-
+            }*/
 
         }
+        
     }
 
 }

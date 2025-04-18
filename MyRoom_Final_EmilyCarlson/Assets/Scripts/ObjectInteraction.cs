@@ -24,20 +24,22 @@ public class ObjectInteration : MonoBehaviour
 
     public bool interactable;
     
-    PickingUp pickingUp;
+    public PickingUp pickingUp;
     private void Start()
     {
-        pickingUp = GetComponent<PickingUp>();
+        pickingUp= GameObject.FindGameObjectWithTag("Pickup").GetComponent<PickingUp>();
+        //pickingUp = GetComponent<PickingUp>();
     }
     private void Update()
     {
 
         Debug.DrawRay(playerCameraTransform.position, playerCameraTransform.forward * hitRange, Color.red);
+        
         if (hit.collider != null)
         {
             hit.collider.GetComponent<Highlight>()?.ToggleHighlight(false);
             pickUpUI.SetActive(false);
-            
+            interactable = false;
            
         }
 
@@ -45,10 +47,14 @@ public class ObjectInteration : MonoBehaviour
         {
             hit.collider.GetComponent<Highlight>()?.ToggleHighlight(true);
             pickUpUI.SetActive(true);
+            interactable = true;
+            //Debug.Log("Interactable is true");
             pickingUp.PickingUpObjects();
-            Debug.Log("Interactable is true");
+           
            
         }
+
+
 
      
     }

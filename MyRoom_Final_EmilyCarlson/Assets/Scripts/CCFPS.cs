@@ -71,10 +71,7 @@ public class CCFPS : MonoBehaviour
         cc.Move(move * speed * Time.deltaTime);
 
         //handle jumping
-        if(isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            velocity.y = jumpForce;
-        }
+      
 
         //apply gravity
         velocity.y += gravity * Time.deltaTime;

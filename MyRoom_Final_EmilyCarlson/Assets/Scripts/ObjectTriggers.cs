@@ -18,7 +18,11 @@ public class ObjectTriggers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(goldfish != null)
+        {
+
+
+        }
     }
 
     private void OnTriggerEnter(Collider other)

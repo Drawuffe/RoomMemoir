@@ -12,6 +12,7 @@ public class PickingUp : MonoBehaviour
     public float throwAmount;
     ObjectInteration objectInt;
    
+    //make punching mechanic
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class PickingUp : MonoBehaviour
             //Debug.Log("Interactable is true");
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("E clicked");
+                //Debug.Log("E clicked");
                 objTransform.parent = cameraTrans;
                 rb.useGravity = false;
                 pickedUp = true;
@@ -40,6 +41,12 @@ public class PickingUp : MonoBehaviour
                 objTransform.parent = null;
                 rb.useGravity = true;
                 pickedUp = false;
+
+            }
+            if (!pickedUp && Input.GetMouseButtonDown(1))
+            {
+
+
 
             }
             //throwing mechanic? couldn't get the object to move on the X/Z and not the Y

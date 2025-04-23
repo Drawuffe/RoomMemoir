@@ -3,25 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private GameObject player;
+
+    //[SerializeField]
+    //private GameObject bookMenu;
+
+    public bool bookMenuOpen;
+   
     private void Awake()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
 
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-      
 
     }
 
@@ -30,7 +26,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-
+ 
+        //bookMenu.SetActive(false);
+        bookMenuOpen = false;
    
     }
 
@@ -42,7 +40,31 @@ public class GameManager : MonoBehaviour
             ResetGame();
 
         }
+
+        
+        
+           
+        //set up book mechanic here
+
+        
+
+     
     }
+
+    /*private void CloseBook()
+    {
+        bookMenu.SetActive(false);
+        bookMenuOpen = false;
+        Debug.Log("Book closed");
+
+
+    }
+    private void OpenBook()
+    {
+        bookMenu.SetActive(true);
+        bookMenuOpen = true;
+        Debug.Log("Book opened"); */
+
 
     public void ResetGame()
     {

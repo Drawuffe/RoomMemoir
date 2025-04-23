@@ -5,16 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pickup
+  - Place
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - player
+  - Book
   - Water
   - UI
   - Pickable
   - Wall
-  - 
+  - player
   - 
   - 
   - 

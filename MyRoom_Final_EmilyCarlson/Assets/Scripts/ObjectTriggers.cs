@@ -2,23 +2,29 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectTriggers : MonoBehaviour
 {
     public GameObject goldfish;
-    public GameObject dogBowl;
+    
 
     private int goldfishInt = 0;
+
+    [SerializeField]
+    private GameObject goldFishImage;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+      
+        goldFishImage.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(goldfish != null)
+        if(goldfishInt == 1)
         {
 
 
@@ -27,10 +33,16 @@ public class ObjectTriggers : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(goldfish != null && goldfishInt < 1)
+        if(goldfishInt <= 0)
         {
             Debug.Log("GoldFish in dogbowl");
             goldfishInt++;
+        }
+        if(goldfishInt >= 1)
+        {
+            goldfishInt = 1;
+            goldFishImage.SetActive(true);
+
         }
        
     }
